@@ -19,7 +19,38 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
+const fileRoutes = require('./routes/fileRoutes');
 
 
-module.exports = app;
+function file (){
+
+  const directoryPath = 'D:/Dev/Harikirat Full Stack/Week-2-Assignments/02-nodejs/files';
+
+  try {
+    const files = fs.readdirSync(directoryPath);
+  
+    files.forEach((file) => {
+      // const filePath = path.join(directoryPath, file);
+      // console.log(filePath);
+      console.log(file)
+    });
+  } catch (err) {
+    console.error('Error reading directory:', err);
+  }
+
+}
+
+
+
+const setupAndStart = ()=>{
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended : true}))
+  app.use(fileRoutes);
+  app.listen(3000,()=>{
+       console.log("Server running on 3000");
+  });
+}
+
+setupAndStart()
