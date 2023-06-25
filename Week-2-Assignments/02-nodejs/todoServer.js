@@ -41,7 +41,7 @@
  */
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
 const todoRoutes = require('./routes/todoRoutes');
@@ -54,7 +54,7 @@ const todoRoutes = require('./routes/todoRoutes');
 
 
 const setUpAndStart = () =>{
-    
+  app.use(cors());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended : true}))
   app.use(todoRoutes);

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "npx nodemon fileServer",
+    "start": "npx nodemon todoServer",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-fileServer": "./node_modules/jest/bin/jest.js ./tests/fileServer.test.js",
     "test-todoServer": "./node_modules/jest/bin/jest.js ./tests/todoServer.test.js",
@@ -22,6 +22,7 @@
     "testTimeout": 10000
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
     "uuid": "^9.0.0"
